@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau des utilisateurs</title>
+    <link rel="stylesheet" href="stylesTab.css">
+</head>
+<body>
+  <div id="Cont_tab">
+    <h1>Liste des utilisateurs</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Date de création</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Jean Dupont</td>
+          <td>jean.dupont@example.com</td>
+          <td>2023-08-10</td>
+          <td><span class="status active">Actif</span></td>
+          <td class="actions">
+            <button class="edit">Modifier</button>
+            <button class="delete">Supprimer</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Marie Diallo</td>
+          <td>marie.diallo@example.com</td>
+          <td>2023-07-15</td>
+          <td><span class="status inactive">Inactif</span></td>
+          <td class="actions">
+            <button class="edit">Modifier</button>
+            <button class="delete">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #Cont_tab {
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow-x: auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    thead {
+      background: #0077b6;
+      color: white;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px 18px;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #ddd;
+      transition: background 0.3s;
+    }
+
+    tbody tr:hover {
+      background: #f1f9ff;
+    }
+
+    th {
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .status {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 500;
+    }
+
+    .active {
+      background: #d4f8d4;
+      color: #2d6a4f;
+    }
+
+    .inactive {
+      background: #ffe5e5;
+      color: #9d0208;
+    }
+
+    .actions button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 6px 12px;
+      margin: 2px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      transition: all 0.2s;
+    }
+
+    .edit {
+      background: #0096c7;
+      color: white;
+    }
+    .edit:hover {
+      background: #0077b6;
+    }
+
+    .delete {
+      background: #e63946;
+      color: white;
+    }
+    .delete:hover {
+      background: #9d0208;
+    }
