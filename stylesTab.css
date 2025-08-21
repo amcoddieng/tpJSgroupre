@@ -1,10 +1,46 @@
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+ body {
+      font-family: Arial, sans-serif;
       background: #f4f6f9;
-      margin: 0;
       padding: 20px;
     }
 
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    /* ---- Formulaire ---- */
+    #userForm {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    #userForm input, #userForm select, #userForm button {
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 0.95em;
+    }
+
+    #userForm button {
+      background: #0077b6;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #userForm button:hover {
+      background: #005f87;
+    }
+
+    /* ---- Tableau ---- */
     #Cont_tab {
       max-width: 1000px;
       margin: auto;
@@ -15,17 +51,9 @@
       padding: 20px;
     }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
     table {
       width: 100%;
       border-collapse: collapse;
-      border-radius: 12px;
-      overflow: hidden;
     }
 
     thead {
@@ -35,63 +63,49 @@
 
     th, td {
       text-align: left;
-      padding: 14px 18px;
+      padding: 12px;
     }
 
     tbody tr {
       border-bottom: 1px solid #ddd;
-      transition: background 0.3s;
+      transition: background 0.2s;
     }
 
     tbody tr:hover {
       background: #f1f9ff;
     }
 
-    th {
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
     .status {
-      padding: 6px 12px;
-      border-radius: 20px;
+      padding: 5px 10px;
+      border-radius: 15px;
       font-size: 0.9em;
-      font-weight: 500;
+      font-weight: bold;
     }
-
     .active {
-      background: #d4f8d4;
+      /* background: #d4f8d4; */
       color: #2d6a4f;
     }
-
     .inactive {
-      background: #ffe5e5;
+      /* background: #ffe5e5; */
       color: #9d0208;
     }
 
-    .actions button {
+    .edit, .delete {
+      padding: 5px 10px;
       border: none;
-      outline: none;
-      cursor: pointer;
-      padding: 6px 12px;
-      margin: 2px;
       border-radius: 6px;
-      font-size: 0.9em;
-      transition: all 0.2s;
+      cursor: pointer;
+      margin-right: 5px;
+      color: white;
     }
-
     .edit {
       background: #0096c7;
-      color: white;
     }
     .edit:hover {
       background: #0077b6;
     }
-
     .delete {
       background: #e63946;
-      color: white;
     }
     .delete:hover {
       background: #9d0208;
