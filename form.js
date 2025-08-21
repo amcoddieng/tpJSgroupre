@@ -1,9 +1,13 @@
 // Identifiants valides par défaut
 const identifiantsValides = {
   email: "utilisateur@exemple.com",
-  motDePasse: "motdepasse123"
+  motDePasse: "motdepasse123",
+  connecte:"non"
 };
-
+function saveAdmin(){
+  localStorage.setItem("admin",JSON.stringify(identifiantsValides));
+}
+ saveAdmin()
 // Récupération des éléments du formulaire
 const champEmail = document.getElementById("email");
 const champMotDePasse = document.getElementById("motdepasse");
@@ -26,7 +30,8 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
 
   let estValide = true;
 
-  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+
 
   // Vérification du champ email
   if (email === "") {
@@ -48,6 +53,8 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
 
   if (email === identifiantsValides.email && motDePasse === identifiantsValides.motDePasse) {
     // Redirection en cas de succès
+    identifiantsValides.connecte="oui"
+    saveAdmin()
     window.location.href = "form1.html";
   } else {
     messageGlobal.textContent = "Email ou mot de passe incorrect.";
