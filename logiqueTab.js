@@ -64,21 +64,45 @@ function afficherUsers() {
 // 🔹 Vérification temps réel des mots de passe
 let ecoute1 = document.getElementById('mdp1');
 let ecoute2 = document.getElementById('mdp2');
-let msg = document.getElementById('msg');
+let msg = document.getElementById('msg');   // correspondance
+let msg1 = document.getElementById('msg1'); // longueur
 
-ecoute2.addEventListener('input', function(){ 
+function verifierLongueur() {
+  if (ecoute1.value.length === 0) {
+      msg1.textContent = "";
+  } else if (ecoute1.value.length < 8) {
+      msg1.textContent = "Le mot de passe doit contenir au moins 8 caractères";
+      msg1.style.color = "orange";
+  } else {
+      msg1.textContent = "Longueur valide ✔";
+      msg1.style.color = "green";
+  }
+}
+
+function verifierCorrespondance() {
   if (ecoute2.value.length === 0) {
-      msg.textContent = ""; 
-  } 
-  else if (ecoute1.value !== ecoute2.value) {
+      msg.textContent = "";
+  } else if (ecoute1.value !== ecoute2.value) {
       msg.textContent = "Les mots de passe ne correspondent pas";
       msg.style.color = "red";
-  } 
-  else {
+  } else {
       msg.textContent = "Les mots de passe correspondent";
       msg.style.color = "green";
   }
+}
+
+// Vérifier en temps réel
+ecoute1.addEventListener('input', function() {
+  verifierLongueur();
+  verifierCorrespondance();
 });
+
+ecoute2.addEventListener('input', function() {
+  verifierLongueur();
+  verifierCorrespondance();
+});
+
+
 
 // 🔹 Formulaire ajout utilisateur
 document.getElementById("userForm").addEventListener("submit", function(e) {
