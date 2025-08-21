@@ -7,6 +7,12 @@ const identifiantsValides = JSON.parse(localStorage.getItem("admin")) || {
 function saveAdmin(){
   localStorage.setItem("admin",JSON.stringify(identifiantsValides));
 }
+// Déconnexion
+function deconnect() {
+  identifiantsValides.connecte = "non"; 
+  saveAdmin();
+  window.location.href = "form.html"; 
+}
  //saveAdmin()
 // Récupération des éléments du formulaire
 const champEmail = document.getElementById("email");
