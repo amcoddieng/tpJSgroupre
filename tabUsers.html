@@ -26,10 +26,17 @@
 }
 
 /* ---- RESPONSIVE ---- */
-@media (min-width: 600px) {
+@media (min-width: 100px) and (max-width:600px){
   form {
     max-width: 500px;
   }
+  table{
+    width: 100px;
+  }
+  th{
+    background-color: red;
+  }
+
 }
 
 /* Desktop : centrer et agrandir tableau */
@@ -66,7 +73,7 @@
     <input type="password" id="mdp1" placeholder="Entrer le mot de passe"><br>
     <input type="password" id="mdp2" placeholder="Entrer à nouveau le mot de passe"><br>
     <span id="msg"></span><br><span id="msg1"></span><br>
-    <button type="submit">Ajouter</button>
+    <button type="submit" id="bb">Ajouter</button>
   </form>
 
   <script>

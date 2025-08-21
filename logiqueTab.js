@@ -60,24 +60,39 @@ function afficherUsers() {
     tab.appendChild(tr);
   });
 }
-
+// h==================================================================================================h
 // 🔹 Vérification temps réel des mots de passe
 let ecoute1 = document.getElementById('mdp1');
 let ecoute2 = document.getElementById('mdp2');
-let msg = document.getElementById('msg');   // correspondance
-let msg1 = document.getElementById('msg1'); // longueur
+let msg = document.getElementById('msg');   
+let msg1 = document.getElementById('msg1'); 
 
 function verifierLongueur() {
-  if (ecoute1.value.length === 0) {
+  let valeur = ecoute1.value;
+
+  // Compter uniquement les lettres
+  let nbLettres = (valeur.match(/[a-zA-Z]/g) || []).length;
+
+  if (valeur.length === 0) {
       msg1.textContent = "";
-  } else if (ecoute1.value.length < 8) {
+  } else if (valeur.length < 8) {
       msg1.textContent = "Le mot de passe doit contenir au moins 8 caractères";
       msg1.style.color = "orange";
+      document.getElementById('bb').disabled = true;
+
+  } else if (nbLettres < 2) {
+      msg1.textContent = "Le mot de passe doit contenir au moins 2 lettres";
+      msg1.style.color = "orange";
+      document.getElementById('bb').disabled = true;
+
   } else {
-      msg1.textContent = "Longueur valide ✔";
+      msg1.textContent = "Mot de passe valide ";
       msg1.style.color = "green";
+      document.getElementById('bb').disabled = false;
+
   }
 }
+
 
 function verifierCorrespondance() {
   if (ecoute2.value.length === 0) {
