@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page de Connexion</title>
+  <link rel="stylesheet" href="form.css" />
+</head>
+<body>
+  <div class="Connexion">
+    <h1>Bienvenue</h1>
+    <form id="loginForm" novalidate>
+      <input type="email" id="email" placeholder="Email" />
+      <p class="erreur" id="emailErreur"></p>
+
+      <input type="password" id="motdepasse" placeholder="Mot de passe" />
+      <p class="erreur" id="motdepasseErreur"></p>
+
+      <button type="submit">Valider</button>
+    </form>
+    <p id="message"></p>
+  </div>
+
+  <script src="form.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+/*  Animation de fond */
+@keyframes fondAnime {
+  0%   { background-color: #008080; }   
+  50%  { background-color: #b2f5ea; }   
+  100% { background-color: #ffb6c1; }   
+}
+
+/*  Corps de la page */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fondAnime 12s ease-in-out infinite;
+}
+
+.Connexion {
+  background-color: #ffffff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #ff69b4aa; 
+  width: 100%;
+  max-width: 350px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Titre */
+.Connexion h1 {
+  color: #ff69b4; 
+  margin-bottom: 20px;
+}
+
+/*  Champs de saisie */
+.Connexion input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 2px solid #b2f5ea; 
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/*  Bouton */
+.Connexion button {
+  width: 100%;
+  padding: 12px;
+  background-color: #008080; 
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.Connexion button:hover {
+  background-color: #006666; 
+}
+
+/* Messages d'erreur */
+.erreur {
+  color: red;
+  font-size: 12px;
+  text-align: left;
+  min-height: 14px;
+}
+
+/* Message général */
+#message {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #008080;
+}
