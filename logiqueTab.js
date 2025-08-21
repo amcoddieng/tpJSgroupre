@@ -1,3 +1,4 @@
+
 // Charger les données depuis le localStorage ou initialiser par défaut
 let user = JSON.parse(localStorage.getItem("users")) || [
     {nom : "amadou dieng", email : "dieng0097@gmail.com", mdp : "amadou", status : "valider", date : "20/08/2025"},
