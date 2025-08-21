@@ -1,5 +1,5 @@
 // Identifiants valides par défaut
-const identifiantsValides = JSON.parse(localStorage.getItem("users")) || {
+const identifiantsValides = JSON.parse(localStorage.getItem("admin")) || {
   email: "utilisateur@exemple.com",
   motDePasse: "motdepasse123",
   connecte:"non"
