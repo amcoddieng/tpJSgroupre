@@ -1,77 +1,111 @@
+// Charger les données depuis le localStorage ou initialiser par défaut
+let user = JSON.parse(localStorage.getItem("users")) || [
+    {nom : "amadou dieng", email : "dieng0097@gmail.com", mdp : "amadou", status : "valider", date : "20/08/2025"},
+    {nom : "soda kebe", email : "dieng0097@gmail.com", mdp : "amadou", status : "valider", date : "20/08/2025"},
+    {nom : "madiop wade", email : "dieng0097@gmail.com", mdp : "amadou", status : "encours", date : "20/08/2025"},
+    {nom : "amadou dieng", email : "dieng0097@gmail.com", mdp : "amadou", status : "invalide", date : "20/08/2025"}
+];
 
+let tab = document.getElementById('corpsTab');
 
-    let tab = document.getElementById('corpsTab');
+// 🔹 Fonction pour sauvegarder dans localStorage
+function saveUsers() {
+  localStorage.setItem("users", JSON.stringify(user));
+}
 
-    function afficherUsers() {
-      tab.innerHTML = ""; // reset avant affichage
-      user.forEach((Element, index) => {
-        let tr = document.createElement('tr');
-        let th1 = document.createElement('td');
-        let th2 = document.createElement('td');
-        let th3 = document.createElement('td');
-        let th4 = document.createElement('td');
-        let th5 = document.createElement('td');
+// 🔹 Affichage des utilisateurs
+function afficherUsers() {
+  tab.innerHTML = ""; 
+  user.forEach((Element, index) => {
+    let tr = document.createElement('tr');
 
-        th1.textContent = Element.nom;
-        th2.textContent = Element.email;
-        th3.textContent = Element.date;
+    tr.innerHTML = `
+      <td>${Element.nom}</td>
+      <td>${Element.email}</td>
+      <td>${Element.date}</td>
+      <td class="status ${Element.status === "valider" ? "active" : "inactive"}">${Element.status}</td>
+      <td>
+        <button class="edit">Changer</button>
+        <button class="delete">Supprimer</button>
+      </td>
+    `;
 
-        th4.textContent = Element.status;
-        th4.classList.add("status", Element.status === "valider" ? "active" : "inactive");
-
-        let btnChange = document.createElement('button');
-        btnChange.textContent = "Changer";
-        btnChange.classList.add("edit");
-        btnChange.addEventListener("click", () => {
-          Element.status = (Element.status === "valider") ? "encours" : "valider";
-          afficherUsers();
-        });
-
-        let btnDelete = document.createElement('button');
-        btnDelete.textContent = "Supprimer";
-        btnDelete.classList.add("delete");
-        btnDelete.addEventListener("click", () => {
-          user.splice(index, 1);
-          afficherUsers();
-        });
-
-        th5.appendChild(btnChange);
-        th5.appendChild(btnDelete);
-
-        tr.appendChild(th1);
-        tr.appendChild(th2);
-        tr.appendChild(th3);
-        tr.appendChild(th4);
-        tr.appendChild(th5);
-        tab.appendChild(tr);
-      });
-    }
-
-    // Formulaire ajout utilisateur
-    document.getElementById("userForm").addEventListener("submit", function(e) {
-        let today = new Date();
-        let jour   = today.getDate().toString().padStart(2, '0');
-        let mois   = (today.getMonth() + 1).toString().padStart(2, '0');
-        let annee  = today.getFullYear();
-        let heures   = today.getHours().toString().padStart(2, '0');
-        let minutes  = today.getMinutes().toString().padStart(2, '0');
-        let secondes = today.getSeconds().toString().padStart(2, '0');
-
-let dateFormatee = `${jour}/${mois}/${annee} ${heures}:${minutes}:${secondes}`;
-        
-
-        e.preventDefault();
-        let newUser = {
-        nom: document.getElementById("nom").value,
-        email: document.getElementById("email").value,
-        date: dateFormatee,
-        status: "en cours de validation"
-      };
-      user.push(newUser);
+    // Bouton changer status
+    tr.querySelector(".edit").addEventListener("click", () => {
+      let v = confirm("Voulez-vous valider ?");
+      Element.status = v ? "valider" : "invalide";
+      saveUsers();
       afficherUsers();
-      this.reset();
     });
 
-    // affichage initial
+    // Bouton supprimer
+    tr.querySelector(".delete").addEventListener("click", () => {
+      let c = confirm("Voulez-vous supprimer cet utilisateur ?");
+      if (c) {
+        user.splice(index, 1);
+        saveUsers();
+        afficherUsers();
+      }
+    });
+
+    tab.appendChild(tr);
+  });
+}
+
+// 🔹 Vérification temps réel des mots de passe
+let ecoute1 = document.getElementById('mdp1');
+let ecoute2 = document.getElementById('mdp2');
+let msg = document.getElementById('msg');
+
+ecoute2.addEventListener('input', function(){ 
+  if (ecoute2.value.length === 0) {
+      msg.textContent = ""; 
+  } 
+  else if (ecoute1.value !== ecoute2.value) {
+      msg.textContent = "Les mots de passe ne correspondent pas";
+      msg.style.color = "red";
+  } 
+  else {
+      msg.textContent = "Les mots de passe correspondent";
+      msg.style.color = "green";
+  }
+});
+
+// 🔹 Formulaire ajout utilisateur
+document.getElementById("userForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    let nom = document.getElementById('nom');
+    let email = document.getElementById('email');
+
+    if (nom.value.trim() === "" || email.value.trim() === "") {
+        alert("Veuillez remplir tous les champs");
+        return;
+    }
+
+    if (ecoute1.value === "" || ecoute2.value === "" || ecoute1.value !== ecoute2.value) {
+        alert("Vérifiez vos mots de passe !");
+        return;
+    }
+
+    let today = new Date();
+    let dateFormatee = today.toLocaleDateString("fr-FR") + " " + today.toLocaleTimeString("fr-FR");
+
+    let newUser = {
+      nom: nom.value,
+      email: email.value,
+      date: dateFormatee,
+      status: "encours",
+      mdp : ecoute1.value
+    };
+
+    user.push(newUser);
+    saveUsers();
     afficherUsers();
 
+    alert("Utilisateur ajouté avec succès !");
+    this.reset();
+    msg.textContent = "";
+});
+
+// 🔹 affichage initial
+afficherUsers();
