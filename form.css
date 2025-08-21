@@ -1,0 +1,95 @@
+/* .containerIput{
+    
+    width: 600px;
+    height: 400px;
+    background-color: aqua;
+    text-align: center;
+    margin-left: 400px;
+    border-radius: 30px;
+    
+    
+}  
+
+.principalInput:hover{
+    background-color: rgb(178, 251, 252);
+}
+
+#email{
+    padding: 20px;
+    border-radius: 20px;
+    width: 200px;
+    border: 1px solid;
+    text-align: center;
+    font-size: 20px;
+    background-color: rgb(7, 36, 63);
+    color: white;
+    font-weight: 600;
+    margin: 20px;
+}
+
+#mdp{
+    padding: 20px;
+    border-radius: 20px;
+    width: 200px;
+    border: 1px solid;
+    text-align: center;
+    font-size: 20px;
+    background-color: rgb(7, 36, 63);
+    color: white;
+    font-weight: 600;
+    margin: 20px;
+}
+
+#envoi{
+    border: 1px solid black;
+    width: 100px;
+    height: 60px;
+    padding: 20px;
+    background-color: blue;
+    color: white;
+    font-size: 20px;
+     } */
+
+.containerInput {
+    width: 600px;
+    height: 500px;
+    background-color: aqua;
+    padding: 20px;
+    margin-left: 300px;
+    border-radius: 20px;
+    box-shadow: 4px 6px 12px rgba(0,0,0,0.3);
+   
+}
+.containerInput:hover{
+    background-color: rgb(151, 200, 191);
+}
+
+#nom,
+#email,
+#mdp,
+#mdp2,
+#email {
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(20, 3, 82);
+    color: white;
+    text-align: center;
+    margin: 20px;
+    margin-left: 160px;
+     box-shadow: 4px 6px 12px rgba(0,0,0,0.3);
+}
+
+#envoyer {
+    margin-left: 213px;
+    border: none;
+    width: 180px;
+    height: 50px;
+    padding: 20px;
+    background-color: blue;
+    color: white;
+    font-size: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
