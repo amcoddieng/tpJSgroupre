@@ -1,24 +1,19 @@
-// si identifiantsValides.connecte == "non" il sera redirigé vers a.html
-let identifiantsValide = JSON.parse(localStorage.getItem("admin"))
+// Récupérer les infos admin depuis le localStorage
+let identifiantsValide = JSON.parse(localStorage.getItem("admin"));
 
 // si pas connecté => rediriger vers form.html
-if (identifiantsValide.connecte === "non") {
+if (identifiantsValide.connecte == "non") {
   window.location.href = "form.html"; 
 }
-//deconnection
-function deconnect(){
-    identifiantsValide.connecte === "non"
-    saveAdmin()
-    window.location.href = "form.html"; 
-}
 
-// Charger les données depuis le localStorage ou initialiser par défaut
-let user = JSON.parse(localStorage.getItem("users")) || [
-    {nom : "amadou dieng", email : "dieng0097@gmail.com", mdp : "amadou", status : "valider", date : "20/08/2025"},
-    {nom : "soda kebe", email : "dieng0097@gmail.com", mdp : "amadou", status : "valider", date : "20/08/2025"},
-    {nom : "madiop wade", email : "dieng0097@gmail.com", mdp : "amadou", status : "encours", date : "20/08/2025"},
-    {nom : "amadou dieng", email : "dieng0097@gmail.com", mdp : "amadou", status : "invalide", date : "20/08/2025"}
-];
+// fonction pour sauvegarder l'admin dans le localStorage
+// function saveAdmin() {
+//   localStorage.setItem("admin", JSON.stringify(identifiantsValide));
+// }
+
+
+
+
 
 let tab = document.getElementById('corpsTab');
 
