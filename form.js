@@ -1,5 +1,5 @@
 // Identifiants valides par défaut
-const identifiantsValides = {
+const identifiantsValides = JSON.parse(localStorage.getItem("users")) || {
   email: "utilisateur@exemple.com",
   motDePasse: "motdepasse123",
   connecte:"non"
@@ -7,7 +7,7 @@ const identifiantsValides = {
 function saveAdmin(){
   localStorage.setItem("admin",JSON.stringify(identifiantsValides));
 }
- saveAdmin()
+ //saveAdmin()
 // Récupération des éléments du formulaire
 const champEmail = document.getElementById("email");
 const champMotDePasse = document.getElementById("motdepasse");
@@ -55,7 +55,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     // Redirection en cas de succès
     identifiantsValides.connecte="oui"
     saveAdmin()
-    window.location.href = "form1.html";
+    window.location.href = "tabUsers.html";
   } else {
     messageGlobal.textContent = "Email ou mot de passe incorrect.";
   }

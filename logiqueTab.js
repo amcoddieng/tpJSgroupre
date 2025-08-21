@@ -1,3 +1,16 @@
+// si identifiantsValides.connecte == "non" il sera redirigé vers a.html
+let identifiantsValide = JSON.parse(localStorage.getItem("admin"))
+
+// si pas connecté => rediriger vers form.html
+if (identifiantsValide.connecte === "non") {
+  window.location.href = "form.html"; 
+}
+//deconnection
+function deconnect(){
+    identifiantsValide.connecte === "non"
+    saveAdmin()
+    window.location.href = "form.html"; 
+}
 
 // Charger les données depuis le localStorage ou initialiser par défaut
 let user = JSON.parse(localStorage.getItem("users")) || [

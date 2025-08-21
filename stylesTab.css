@@ -3,7 +3,10 @@
       background: #f4f6f9;
       padding: 20px;
     }
-
+#deconnection{
+    margin-top: -10px;
+    float: right;
+}
     h1 {
       text-align: center;
       color: #333;
