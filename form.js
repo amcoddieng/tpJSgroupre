@@ -43,14 +43,15 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     estValide = false;
   }
 
-  // Si tout est bon
-  if (!estValide) return;
+   if (email === identifiantsValides.email && motDePasse === identifiantsValides.motDePasse) {
+    // Enregistrer l'état de connexion
+    localStorage.setItem("estConnecte", "true");
 
-  if (email === identifiantsValides.email && motDePasse === identifiantsValides.motDePasse) {
     // Redirection en cas de succès
     window.location.href = "form1.html";
   } else {
     messageGlobal.textContent = "Email ou mot de passe incorrect.";
+    messageGlobal.style.color = "red";
   }
 });
 
