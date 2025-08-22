@@ -60,25 +60,64 @@ function afficherUsers() {
     tab.appendChild(tr);
   });
 }
-
+// h==================================================================================================h
 // 🔹 Vérification temps réel des mots de passe
 let ecoute1 = document.getElementById('mdp1');
 let ecoute2 = document.getElementById('mdp2');
-let msg = document.getElementById('msg');
+let msg = document.getElementById('msg');   
+let msg1 = document.getElementById('msg1'); 
 
-ecoute2.addEventListener('input', function(){ 
+function verifierLongueur() {
+  let valeur = ecoute1.value;
+
+  // Compter uniquement les lettres
+  let nbLettres = (valeur.match(/[a-zA-Z]/g) || []).length;
+
+  if (valeur.length === 0) {
+      msg1.textContent = "";
+  } else if (valeur.length < 8) {
+      msg1.textContent = "Le mot de passe doit contenir au moins 8 caractères";
+      msg1.style.color = "orange";
+      document.getElementById('bb').disabled = true;
+
+  } else if (nbLettres < 2) {
+      msg1.textContent = "Le mot de passe doit contenir au moins 2 lettres";
+      msg1.style.color = "orange";
+      document.getElementById('bb').disabled = true;
+
+  } else {
+      msg1.textContent = "Mot de passe valide ";
+      msg1.style.color = "green";
+      document.getElementById('bb').disabled = false;
+
+  }
+}
+
+
+function verifierCorrespondance() {
   if (ecoute2.value.length === 0) {
-      msg.textContent = ""; 
-  } 
-  else if (ecoute1.value !== ecoute2.value) {
+      msg.textContent = "";
+  } else if (ecoute1.value !== ecoute2.value) {
       msg.textContent = "Les mots de passe ne correspondent pas";
       msg.style.color = "red";
-  } 
-  else {
+  } else {
       msg.textContent = "Les mots de passe correspondent";
       msg.style.color = "green";
   }
+}
+
+// Vérifier en temps réel
+ecoute1.addEventListener('input', function() {
+  verifierLongueur();
+  verifierCorrespondance();
 });
+
+ecoute2.addEventListener('input', function() {
+  verifierLongueur();
+  verifierCorrespondance();
+});
+
+
 
 // 🔹 Formulaire ajout utilisateur
 document.getElementById("userForm").addEventListener("submit", function(e) {
