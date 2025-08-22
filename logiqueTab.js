@@ -105,7 +105,6 @@ function verifierCorrespondance() {
       msg.style.color = "green";
   }
 }
-
 // Vérifier en temps réel
 ecoute1.addEventListener('input', function() {
   verifierLongueur();
